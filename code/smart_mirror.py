@@ -20,12 +20,11 @@ date_format = "%b %d, %Y"
 news_country_code = 'us'
 
 #do weather api stuff
-#replace token with token you get when you create account
-#weather_api_token = '<TOKEN>'
+weather_api_token = '<9192fdf9b748bbd236af4cd4eb5d45cb>'
 #set the lang for weather
-#weather_lang = 'en'
+weather_lang = 'en'
 #display in us units
-#weather_unit = 'us'
+weather_unit = 'us'
 
 #set the latitude none
 latitude = None 
