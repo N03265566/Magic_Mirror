@@ -1,9 +1,9 @@
+#modified from HackerShackOfficial
 import Tkinter
 import locale
 import threading
 import time
 import json
-#modified from HackerShackOfficial
 
 from PIL import Image, ImageTk
 from contextlib import contextmanager
@@ -196,6 +196,10 @@ class Weather(Frame):
     @staticmethod
     def convert_kelvin_to_fahrenheit(kelvin_temp):
         return 1.8 * (kelvin_temp - 273) + 32
+
+
+#Initialize the Compliments class
+Class Compliments(Frame):
 
 #initialize fullscreen class
 Class FullscreenWindow:
