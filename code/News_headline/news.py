@@ -11,4 +11,7 @@ news_headline = soup.find_all('div', class_='MomentCapsuleSummary-details')
 
 for news_headlines in news_headline:
 	for tag in news_headlines.find_all('a'):
-		print(tag['title'])
+		try:
+			print(tag['title'])
+		except KeyError:
+			pass
