@@ -1,8 +1,11 @@
-import Tkinter
+from Tkinter import *
 import locale
 import threading
 import time
 import json
+import requests
+import traceback
+import feedparser
 #modified from HackerShackOfficial
 
 from PIL import Image, ImageTk
@@ -198,7 +201,7 @@ class Weather(Frame):
         return 1.8 * (kelvin_temp - 273) + 32
 
 #initialize fullscreen class
-Class FullscreenWindow:
+class FullscreenWindow:
 
     #initialize
     def __init__(self):
