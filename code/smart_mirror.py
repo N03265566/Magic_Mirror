@@ -1,12 +1,9 @@
-from Tkinter import *
+#modified from HackerShackOfficial
+import Tkinter
 import locale
 import threading
 import time
 import json
-import requests
-import traceback
-import feedparser
-#modified from HackerShackOfficial
 
 from PIL import Image, ImageTk
 from contextlib import contextmanager
@@ -49,6 +46,7 @@ def setlocale(name):
             yield locale.setlocale(locale.LC_ALL, name)
         finally:
             locale.setlocale(locale.LC_ALL, saved)
+
 
 #initilize the clock class
 class Clock(Frame):
@@ -199,6 +197,7 @@ class Weather(Frame):
     @staticmethod
     def convert_kelvin_to_fahrenheit(kelvin_temp):
         return 1.8 * (kelvin_temp - 273) + 32
+
 
 #initialize fullscreen class
 class FullscreenWindow:
