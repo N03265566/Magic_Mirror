@@ -4,9 +4,10 @@ import locale
 import threading
 import time
 import json
-
+import urllib2
 from PIL import Image, ImageTk
 from contextlib import contextmanager
+from bs4 import BeautifulSoup
 
 LOCALE_LOCK = threading.Lock()
 
@@ -46,6 +47,7 @@ def setlocale(name):
             yield locale.setlocale(locale.LC_ALL, name)
         finally:
             locale.setlocale(locale.LC_ALL, saved)
+
 
 #initilize the clock class
 class Clock(Frame):
@@ -197,12 +199,36 @@ class Weather(Frame):
     def convert_kelvin_to_fahrenheit(kelvin_temp):
         return 1.8 * (kelvin_temp - 273) + 32
 
+#twitterfeed
+class TwitterFeed(Frame):
+        def __init__(self, parent, *args, **kwargs):
+            Frame.__init__(self, parent, *args, **kwargs)
+            self.config(bg='black')
+            self.title = 'TwitterMoments'
+            self.newsLbl = Label(self, text=self.title, font=('Helvetica', medium_text_size), fg="white", bg="black")
+            self.newsLbl.pack(side=TOP, anchor=W)
+            self.headlinesContainer = Frame(self, bg="black")
+            self.headlinesContainer.pack(side=TOP)
+            self.get_headlines()
 
-#Initialize the Compliments class
-Class Compliments(Frame):
+        def get_headlines(self):
+            try:
+                quote_page = 'https://twitter.com/i/moments'
+                page = urllib2.urlopen(quote_page)
+                soup = BeautifulSoup(page, 'html.parser')
+                news_headline = soup.find_all('div', class_='MomentCapsuleSummary-details')
+                for news_headlines in news_headline:
+                    for tag in news_headlines.find_all('a'):
+                        print(tag['title'])
+
+            except Exception as e:
+            traceback.print_exc()
+            print "Error: %s. Cannot get news." % e
+            #call get_headlines again after 600000 seconds or 10 mins
+            self.after(600000, self.get_headlines)
 
 #initialize fullscreen class
-Class FullscreenWindow:
+class FullscreenWindow:
 
     #initialize
     def __init__(self):
@@ -217,10 +243,13 @@ Class FullscreenWindow:
         self.tk.bind("<Escape>", self.end_fullscreen)
         #display clock
         self.clock = Clock(self.topFrame)
-        self.clock.pack(side = RIGHT, ancho = N, padx = 100, pady = 60)
+        self.clock.pack(side = LEFT, ancho = N, padx = 100, pady = 60)
         #display weather
         self.weather = Weather(self.topFrame)
-        self.weather.pack(side = LEFT, anchor = N, padx = 100, pady = 60)
+        self.weather.pack(side = RIGHT, anchor = N, padx = 100, pady = 60)
+        #twitter moments
+        self.twitter = TwitterFeed(self.bottomFrame)
+        self.twitter.pack(side=LEFT, anchor=S, padx=100, pady=60)
 
     def toggle_fullscreen(self, event = None):
         self.state = not self.state 
