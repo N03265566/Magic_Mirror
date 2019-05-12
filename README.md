@@ -10,12 +10,13 @@ We intend to use a mirror for the screen with a similarly sized screen behind it
 A one way mirror (12x24), flat computer screen (similar size to one way mirror), wire, wood stain, wood planks, wood panel, power cable, motion camera, raspberry pi.
 
 **Project Diagram:**
-![Project Diagram](/Downloads/diagram.png)
+![Project Diagram](diagram.png)
 
 Utilizing TKinter Tk GUI toolkit, we will be able to display the smart mirror objects to the monitor screen.
 
 **Instructions for installation and code into Command Line:**
 >$ git clone https://github.com/N03265566/Magic_Mirror
+
 change directory into /code folder
 
 *//install pip*
