@@ -33,6 +33,7 @@ OR
 
 
 **Instructions for building frame:**
+
 Tools required for building frame: Hammer, Wood Glue, Hand Saw, Clamp, Tape measure, Carpenter square
 ![](tools.jpg)
 
