@@ -17,16 +17,16 @@ A one way mirror (12x24), flat computer screen (similar size to one way mirror),
 
 change directory into /code folder
 
-*//install pip*
+*install pip*
 >$ sudo apt-get install python-pip
 
-*//install packages in requirements.txt*
+*install packages in requirements.txt*
 >$ sudo pip install -r requirements.txt
 
-*//install python TKinter*
+*install python TKinter*
 >$ sudo apt-get install python-imaging-tk
 
-*//install beautiful soup*
+*install beautiful soup*
 >$ sudo apt-get install python-bs4
 OR
 >$ sudo pip install beautifulsoup4
