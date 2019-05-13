@@ -5,6 +5,7 @@ import threading
 import time
 import json
 import urllib2
+import traceback, sys, feedparser, requests
 from PIL import Image, ImageTk
 from contextlib import contextmanager
 from bs4 import BeautifulSoup
@@ -21,16 +22,16 @@ date_format = "%b %d, %Y"
 news_country_code = 'us'
 
 #do weather api stuff
-weather_api_token = '<9192fdf9b748bbd236af4cd4eb5d45cb>'
+weather_api_token = '9192fdf9b748bbd236af4cd4eb5d45cb'
 #set the lang for weather
 weather_lang = 'en'
 #display in us units
 weather_unit = 'us'
 
 #set the latitude none
-latitude = None 
+latitude = '37.8267' 
 #Set the longitude to none
-longitude = None 
+longitude = '-122.4233' 
 #set different text sizes
 xlarge_text_size = 94
 large_text_size = 48
@@ -48,6 +49,21 @@ def setlocale(name):
         finally:
             locale.setlocale(locale.LC_ALL, saved)
 
+icon_lookup = {
+    'clear-day': "assets/Sun.png",  # clear sky day
+    'wind': "assets/Wind.png",   #wind
+    'cloudy': "assets/Cloud.png",  # cloudy day
+    'partly-cloudy-day': "assets/PartlySunny.png",  # partly cloudy day
+    'rain': "assets/Rain.png",  # rain day
+    'snow': "assets/Snow.png",  # snow day
+    'snow-thin': "assets/Snow.png",  # sleet day
+    'fog': "assets/Haze.png",  # fog day
+    'clear-night': "assets/Moon.png",  # clear sky night
+    'partly-cloudy-night': "assets/PartlyMoon.png",  # scattered clouds night
+    'thunderstorm': "assets/Storm.png",  # thunderstorm
+    'tornado': "assests/Tornado.png",    # tornado
+    'hail': "assests/Hail.png"  # hail
+}
 
 #initilize the clock class
 class Clock(Frame):
@@ -143,6 +159,7 @@ class Weather(Frame):
             else:
                 location2 = ""
                 # get weather
+                
                 weather_req_url = "https://api.darksky.net/forecast/%s/%s,%s?lang=%s&units=%s" % (weather_api_token, latitude, longitude, weather_lang, weather_unit)
 
             r = requests.get(weather_req_url)
@@ -221,17 +238,37 @@ class TwitterFeed(Frame):
             page = urllib2.urlopen(quote_page)
             soup = BeautifulSoup(page, 'html.parser')
             news_headline = soup.find_all('div', class_='MomentCapsuleSummary-details')
-            for news_headlines in news_headline:
-                for tag in news_headlines.find_all('a', limit = 5):
-                    tag = tag['title']
-                    headline = NewsHeadline(self.headlinesContainer, tag.title)
-                    print(tag['title'])
+            for news_headlines in news_headline[0:5]:
+                for tag in news_headlines.find_all('a', limit = 1):
+                    try:
+                        tag = tag['title']
+                        headline = NewsHeadline(self.headlinesContainer, tag)
+                        headline.pack(side=TOP, anchor=W)
+                    except KeyError:
+                        pass
 
         except Exception as e:
             traceback.print_exc()
             print "Error: %s. Cannot get news." % e
         #call get_headlines again after 600000 seconds or 10 mins
         self.after(600000, self.get_headlines)
+
+class NewsHeadline(Frame):
+    def __init__(self, parent, event_name=""):
+        Frame.__init__(self, parent, bg='black')
+
+        image = Image.open("assets/Newspaper.png")
+        image = image.resize((25, 25), Image.ANTIALIAS)
+        image = image.convert('RGB')
+        photo = ImageTk.PhotoImage(image)
+
+        self.iconLbl = Label(self, bg='black', image=photo)
+        self.iconLbl.image = photo
+        self.iconLbl.pack(side=LEFT, anchor=N)
+
+        self.eventName = event_name
+        self.eventNameLbl = Label(self, text=self.eventName, font=('Helvetica', small_text_size), fg="white", bg="black")
+        self.eventNameLbl.pack(side=LEFT, anchor=N)
 
 #welcomemessage
 # class Message(Frame):
@@ -251,7 +288,7 @@ class FullscreenWindow:
         self.topFrame = Frame(self.tk, background='black')
         self.bottomFrame = Frame(self.tk, background='black')
         self.topFrame.pack(side = TOP, fill = BOTH, expand = YES)
-        self.BottomFrame.pack(side = BOTTOM, fill = BOTH, expand = YES)
+        self.bottomFrame.pack(side = BOTTOM, fill = BOTH, expand = YES)
         self.state = False
         self.tk.bind("<Return>", self.toggle_fullscreen)
         self.tk.bind("<Escape>", self.end_fullscreen)
@@ -265,10 +302,8 @@ class FullscreenWindow:
         self.twitter = TwitterFeed(self.bottomFrame)
         self.twitter.pack(side=LEFT, anchor=S, padx=100, pady=60)
         #welcome message
-        # self.msg = Message(self.bottomFrame)
-        # self.msg.pack(side=LEFT, anchor = CENTER, padx = 100, pady = 60)
-        # w = Message(self.tk, text="Hello Beautiful!")
-        # w.pack(side=LEFT, anchor = CENTER, padx = 100, pady = 60)
+        self.msg = Message(self.bottomFrame)
+        self.msg.pack(side=LEFT, anchor = CENTER, padx = 100, pady = 60)
 
     def toggle_fullscreen(self, event = None):
         self.state = not self.state 

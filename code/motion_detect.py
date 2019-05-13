@@ -35,28 +35,30 @@ try:
         timeStamp = time.strftime('%I:%M %p')
         if GPIO.input(motionPin) == 0: 
             screen = "Screen is Off"
-            print("Screen is Off", motionPin)
+            print("Screen is Off")
             print(timeStamp)
             call(["/usr/bin/vcgencmd", "display_power", "0"])          
             time.sleep(1)
-            # cursor.execute('''INSERT INTO time VALUES(?,?,?)''', (timeStamp, screen)
-	    	# mydb.commit()
+            # cursor.execute('''INSERT INTO time VALUES(?,?)''', (timeStamp, screen)
+	        # mydb.commit()
 	    	# all_rows = cursor.execute('''SELECT * FROM time''')
 	    	# os.system('clear')
 	    	# for row in all_rows:
 			#     print('{0} : {1}'.format(str(row[0]), row[1])
-        elif GPIO.input(motionPin) == 1:
+
+        if GPIO.input(motionPin) == 1:
             screen = "Screen is On"
-            print("Screen is On", motionPin)
+            print("Screen is On")
             print(timeStamp)
             call(["/usr/bin/vcgencmd", "display_power", "1"])
-            time.sleep(5)
-            # cursor.execute('''INSERT INTO time VALUES(?,?,?)''', (timeStamp, screen)
+            time.sleep(30)
+            # cursor.execute('''INSERT INTO time VALUES(?,?)''', (timeStamp, screen)
 	    	# mydb.commit()
 	    	# all_rows = cursor.execute('''SELECT * FROM time''')
 	    	# os.system('clear')
 	    	# for row in all_rows:
 			#     print('{0} : {1}'.format(str(row[0]), row[1])
+
         
 except mydb.Error, e:
 	print "Error %s:" %e.args[0]
