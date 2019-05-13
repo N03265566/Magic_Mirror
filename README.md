@@ -49,7 +49,7 @@ Measure the computer monitor width and height and then do the same to the mirror
 If you so desire, you can stain all the wood before finalizing it all with nails, giving it a more unique look than plain pine as seen above.
 
 
-**Running the Script**
+**Running the Script:**
 Utilizing Python's standard GUI, TKinter, we will be able to display the smart mirror objects to the monitor screen from the Pi.
 Run the program with the following code:
 >$ python smart_mirror.py
