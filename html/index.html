@@ -27,7 +27,7 @@
 				tableData = [];
 				$.getJSON('/cgi-bin/data.py', function(chartJSON) {
 					for (i = 0; i < chartJSON.length; i++){
-						tableData.push([new Date(chartJSON[i].starttime), chartJSON[i].totaltime, chartJSON[i].endtime]);
+						tableData.push([new Date(chartJSON[i].starttime), chartJSON[i].endtime]);
 					};
 					drawChart();
 					drawTable();
