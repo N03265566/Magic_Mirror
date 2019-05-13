@@ -28,7 +28,9 @@ change directory into /code folder
 
 *install beautiful soup*
 >$ sudo apt-get install python-bs4
+
 OR
+
 >$ sudo pip install beautifulsoup4
 
 
