@@ -9,10 +9,7 @@ We intend to use a mirror for the screen with a similarly sized screen behind it
 **Bill of Materials:**
 A one way mirror (12x24), flat computer screen (similar size to one way mirror), wire, wood stain, wood planks, wood panel, power cable, motion camera, raspberry pi.
 
-**Project Diagram:**
-![Project Diagram](diagram.png)
 
-Utilizing TKinter Tk GUI toolkit, we will be able to display the smart mirror objects to the monitor screen.
 
 **Instructions for installation and code into Command Line:**
 >$ git clone https://github.com/N03265566/Magic_Mirror
@@ -32,3 +29,12 @@ change directory into /code folder
 >$ sudo apt-get install python-bs4
 OR
 >$ sudo pip install beautifulsoup4
+
+**Instructions for building frame:**
+![frameConstruction](pictures/20412.jpeg)
+
+
+
+Utilizing Python's standard GUI, TKinter, we will be able to display the smart mirror objects to the monitor screen from the GUI.
+Run the program with the following code:
+>$ python smart_mirror.py
