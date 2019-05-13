@@ -271,10 +271,7 @@ class NewsHeadline(Frame):
         self.eventNameLbl.pack(side=LEFT, anchor=N)
 
 #welcomemessage
-# class Message(Frame):
-#     def __init__(self, parent, *args, **kwargs):
-#         Frame.__init__(self, parent, *args, **kwargs)
-#         self.config(bg='black')
+
 
 #initialize fullscreen class
 class FullscreenWindow:
@@ -300,10 +297,9 @@ class FullscreenWindow:
         self.weather.pack(side = RIGHT, anchor = N, padx = 100, pady = 60)
         #twitter moments
         self.twitter = TwitterFeed(self.bottomFrame)
-        self.twitter.pack(side=LEFT, anchor=S, padx=100, pady=60)
+        self.twitter.pack(side=LEFT, anchor=S, padx=50, pady=50)
         #welcome message
-        self.msg = Message(self.bottomFrame)
-        self.msg.pack(side=LEFT, anchor = CENTER, padx = 100, pady = 60)
+        
 
     def toggle_fullscreen(self, event = None):
         self.state = not self.state 
