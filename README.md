@@ -29,7 +29,6 @@ OR
 >$ sudo pip install beautifulsoup4
 
 **Instructions for building frame:**
-# Building The Frame
 
 ![](tools.jpg)
 
