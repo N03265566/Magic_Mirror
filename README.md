@@ -4,12 +4,10 @@
 We will be building a smart mirror utilizing the raspberry pi that can give the user a welcome message, display the current date and time, and forecast for the day. The smart display will turn on when the user walks in front of the mirror, using a motion detection sensor. 
 
 **Technologies:**
-We intend to use a mirror for the screen with a similarly sized screen behind it to show through the mirror on the other side. For the programming languages we will use Python and Bash scripting. For video communications, we will be using the same motion camera used to start the mirror screen to show the user. For the weather and time, we will have the mirror connected to the internet and simply have the weather and clock boot up in the corners of the screen.
+We intend to use a mirror for the screen with a similarly sized screen behind it to show through the mirror on the other side. For the programming languages we will use Python and Bash scripting. For the weather and time, we will have the mirror connected to the internet and simply have the weather and clock boot up in the corners of the screen.
 
 **Bill of Materials:**
-A one way mirror (12x24), flat computer screen (similar size to one way mirror), wire, wood stain, wood planks, wood panel, power cable, motion camera, raspberry pi.
-
-
+A one way mirror (12x24), flat computer screen (similar size to one way mirror), wire, wood stain, wood planks, wood panel, power cable, motion detector, raspberry pi.
 
 **Instructions for installation and code into Command Line:**
 >$ git clone https://github.com/N03265566/Magic_Mirror
@@ -31,7 +29,7 @@ OR
 >$ sudo pip install beautifulsoup4
 
 **Instructions for building frame:**
-![frameConstruction](pictures/20412.jpeg)
+![frameConstruction](20412.jpeg)
 
 
 
