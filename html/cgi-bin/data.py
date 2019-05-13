@@ -12,7 +12,7 @@ cur.execute("SELECT * FROM (SELECT * FROM time ORDER BY time DESC LIMIT 10) ORDE
 dataset = cur.fetchall()
 chartJSON = []
 for row in dataset:
-	chartJSON.append({"starttime": row[0],"totaltime": row[1], "endtime": float(row[2])})
+	chartJSON.append({"starttime": row[0], "endtime": float(row[1])})
 print(json.dumps(chartJSON))
 con.close()
 exit(0)
