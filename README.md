@@ -35,6 +35,6 @@ OR
 
 
 
-Utilizing Python's standard GUI, TKinter, we will be able to display the smart mirror objects to the monitor screen from the GUI.
+Utilizing Python's standard GUI, TKinter, we will be able to display the smart mirror objects to the monitor screen from the Pi.
 Run the program with the following code:
 >$ python smart_mirror.py
