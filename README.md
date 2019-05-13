@@ -37,6 +37,7 @@ OR
 **Instructions for building frame:**
 
 Tools required for building frame: Hammer, Wood Glue, Hand Saw, Clamp, Tape measure, Carpenter square
+
 ![](tools.jpg)
 
 Take the screen you will be using for this project, and remove the shell. This can be done with a little time and a decent flathead screwdriver to slowly peel the outer shell away from the metal interior. Once this is done, measure the screen and the mirror.
