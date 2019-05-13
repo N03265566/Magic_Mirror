@@ -27,7 +27,7 @@
 				tableData = [];
 				$.getJSON('/cgi-bin/data.py', function(chartJSON) {
 					for (i = 0; i < chartJSON.length; i++){
-						tableData.push([new Date(chartJSON[i].starttime), chartJSON[i].endtime]);
+						tableData.push([new Date(chartJSON[i].starttime), new Date(chartJSON[i].endtime)]);
 					};
 					drawChart();
 					drawTable();
@@ -37,8 +37,7 @@
 	                function drawTable() {
 						var tdata = new google.visualization.DataTable();
         					tdata.addColumn('datetime', 'starttime');
-        					tdata.addColumn('datetime', 'totaltime');
-        					tdata.addColumn('number', 'endtime');
+        					tdata.addColumn('datetime', 'endtime');
 						tdata.addRows(tableData);
 					        var table = new google.visualization.Table(document.getElementById('table_div'));
        						table.draw(tdata, {showRowNumber: true, width: '100%', height: '100%'});
