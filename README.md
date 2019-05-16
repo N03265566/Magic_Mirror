@@ -54,15 +54,15 @@ If you so desire, you can stain all the wood before finalizing it all with nails
 
 **Running the Script:**
 Utilizing Python's standard GUI, TKinter, we will be able to display the smart mirror objects to the monitor screen from the Pi.
-Run the program with the following code:
+Run the program with the following code, making sure that you are in the /code folder:
 >$ python smart_mirror.py
 
 
 **News Headlines:**
 This portion of the code will take the top 5 moments from Twitters Moments page and display them on the mirror. Import urllib2 and beautiful soup first then set the Twitter Moments page to a variable. Set another variable to open the Twitter URL and then set another variable to run the Beautiful Soup html parser. Now you will be searching on the webpage for the headlines by looking at the code for Twitter. You're searching for a div and the class name for all headlines are 'MomentCapsuleSummary-details'. After that you make a for loop that repeats searching for the headlines in the 'MomentCapsuleSummary-details' under 'a' and finding all of the 'title' tags. Then the information is sent to the display and only displaying 5 headlines. 
 
-**Video of working project:**
-
+**Gif of working project:**
+*Mirror sold seperately*
 
 ![](MagicMirrorVideo.gif)
 
