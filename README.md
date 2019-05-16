@@ -62,5 +62,7 @@ Run the program with the following code:
 This portion of the code will take the top 5 moments from Twitters Moments page and display them on the mirror. Import urllib2 and beautiful soup first then set the Twitter Moments page to a variable. Set another variable to open the Twitter URL and then set another variable to run the Beautiful Soup html parser. Now you will be searching on the webpage for the headlines by looking at the code for Twitter. You're searching for a div and the class name for all headlines are 'MomentCapsuleSummary-details'. After that you make a for loop that repeats searching for the headlines in the 'MomentCapsuleSummary-details' under 'a' and finding all of the 'title' tags. Then the information is sent to the display and only displaying 5 headlines. 
 
 **Video of working project:**
+
+
 ![](MagicMirrorVideo.gif)
 
