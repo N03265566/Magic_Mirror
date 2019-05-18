@@ -3,7 +3,7 @@ import sqlite3
 import sys
 import json
 
-con = sqlite3.connect('/../log/time.db')
+con = sqlite3.connect('/../../time.db')
 cur = con.cursor()
 
 print("Content-type:text/json;charset=utf-8\n")
